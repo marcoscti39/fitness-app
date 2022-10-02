@@ -43,8 +43,6 @@ export default function Carousel({
       const translateCalc = carouselMove * 100 * -1;
       carouselRef.current.style.transform = `translateX(${translateCalc}%)`;
 
-      console.log(test());
-
       const { amountOfGap } = getCarouselDetails() || { amountOfGap: 0 };
       if (amountOfGap) {
         carouselRef.current.style.gap = `${amountOfGap}px`;

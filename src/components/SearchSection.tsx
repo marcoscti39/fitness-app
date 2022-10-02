@@ -9,6 +9,7 @@ import gymIcon from "../../public/icons/gym.png";
 
 export default function SearchSection() {
   const [bodyParts, setBodyParts] = React.useState<string[]>([]);
+  const carouselItemRef = useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     const getBodyParts = async () => {
@@ -26,7 +27,7 @@ export default function SearchSection() {
       </form>
       <Carousel>
         {bodyParts.map((bodyPart, index) => (
-          <CarouselItem key={index}>
+          <CarouselItem ref={carouselItemRef} key={index}>
             <img className="carousel-gym-icon" src={gymIcon} alt="" />
             {bodyPart}
           </CarouselItem>
