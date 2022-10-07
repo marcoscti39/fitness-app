@@ -4,6 +4,11 @@ export const StyledSearchSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 2rem;
+  width: 100%;
+  max-width: 1400px;
+  box-sizing: border-box;
+
   h2 {
     font-family: Arial, Helvetica, sans-serif;
     max-width: 500px;
@@ -42,29 +47,11 @@ export const StyledCarouselContainer = styled.div`
   overflow-x: hidden;
   width: 100%;
   margin-top: 2rem;
+  box-sizing: border-box;
 
   .carousel {
     display: flex;
     transition: 200ms all;
-  }
-
-  .carousel-item {
-    background-color: pink;
-    font-size: 1.5rem;
-    display: flex;
-    width: 300px;
-    height: 300px;
-    flex-shrink: 0;
-    gap: 3rem;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  .carousel-gym-icon {
-    width: 40px;
-    height: 40px;
   }
 
   .carousel-btn-wrapper {

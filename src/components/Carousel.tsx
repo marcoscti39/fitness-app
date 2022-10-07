@@ -4,25 +4,28 @@ import rightArrow from "../../public/icons/right-arrow.png";
 import leftArrow from "../../public/icons/left-arrow.png";
 
 import { StyledCarouselContainer } from "../styles/styledSearchSection";
-import { test } from "./CarouselItem";
 
 export default function Carousel({
   children,
+  carouselItemRef,
+  forceRender,
+  carouselLength,
 }: {
+  forceRender?: unknown;
+  carouselItemRef: React.RefObject<HTMLDivElement>;
   children: React.ReactNode;
+  carouselLength: number;
 }): React.ReactElement {
   const [carouselMove, setCarouselMove] = React.useState(0);
   const carouselRef = React.useRef<HTMLDivElement>(null);
   const carouselContainerRef = React.useRef<HTMLDivElement>(null);
 
   const getCarouselDetails = () => {
-    const $carouselItem = document.querySelector(".carousel-item");
-
     const carouselWidth =
       carouselContainerRef.current?.getBoundingClientRect().width;
 
-    const carouselItemWidth = $carouselItem?.getBoundingClientRect().width;
-    console.log(carouselItemWidth);
+    const carouselItemWidth =
+      carouselItemRef.current?.getBoundingClientRect().width;
     if (carouselWidth && carouselItemWidth) {
       const amountOfImagesBeingShown = Math.floor(
         carouselWidth / carouselItemWidth
@@ -42,18 +45,19 @@ export default function Carousel({
     if (carouselRef.current) {
       const translateCalc = carouselMove * 100 * -1;
       carouselRef.current.style.transform = `translateX(${translateCalc}%)`;
-
-      const { amountOfGap } = getCarouselDetails() || { amountOfGap: 0 };
-      if (amountOfGap) {
-        carouselRef.current.style.gap = `${amountOfGap}px`;
+      if (carouselItemRef.current) {
+        const { amountOfGap } = getCarouselDetails()!;
+        if (amountOfGap) {
+          carouselRef.current.style.gap = `${amountOfGap}px`;
+        }
       }
     }
-  }, [carouselMove]);
+  }, [carouselMove, forceRender]);
 
   const moveCarouselForwards = () => {
     const { amountOfImagesBeingShown } = getCarouselDetails()!;
-    const carouselEnd = 10 / amountOfImagesBeingShown;
-    if (carouselMove === carouselEnd - 1) return;
+    const carouselEnd = carouselLength / amountOfImagesBeingShown;
+    if (carouselMove === Math.ceil(carouselEnd - 1)) return;
     setCarouselMove((prev) => prev + 1);
   };
 

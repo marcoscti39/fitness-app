@@ -1,14 +1,13 @@
 import React from "react";
 
-interface childrenProp{
-    children: React.ReactNode
+interface childrenProp {
+  children: React.ReactNode;
 }
 
-interface refProp{
-    ref: React.createRef<HTMLDivElement>()
-}
-
-const CarouselItem: React.ForwardRefRenderFunction<HTMLDivElement, childrenProp> = ({ children, ref }) => {
+const CarouselItem: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  childrenProp
+> = ({ children }, ref) => {
   return (
     <div ref={ref} className="carousel-item">
       {children}
@@ -16,4 +15,4 @@ const CarouselItem: React.ForwardRefRenderFunction<HTMLDivElement, childrenProp>
   );
 };
 
-export default React.forwardRef(CarouselItem)
+export default React.forwardRef(CarouselItem);

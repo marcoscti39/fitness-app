@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 export const StyledHeader = styled.header`
   width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+  max-width: 1400px;
 
   .header-container {
     display: flex;

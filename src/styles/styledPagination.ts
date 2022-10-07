@@ -3,7 +3,9 @@ import styled from "styled-components";
 export const StyledPaginationContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 3rem;
+  margin: 3rem 0;
+  width: 100%;
+  max-width: 1400px;
 
   button {
     display: grid;
@@ -13,14 +15,25 @@ export const StyledPaginationContainer = styled.div`
     border: none;
     background-color: white;
     font-size: 1.5rem;
+    position: relative;
+    z-index: 10;
   }
-
+  .pagination-overflow {
+    overflow-x: hidden;
+    display: flex;
+  }
   .pagination {
     display: flex;
+    width: 240px;
+    transition: transform 300ms;
 
     .pagination-item {
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      width: 40px;
+      height: 48px;
       background-color: white;
-      padding: 1rem;
       cursor: pointer;
       text-decoration: none;
       color: black;

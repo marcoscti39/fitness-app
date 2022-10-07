@@ -6,6 +6,9 @@ export const StyledMain = styled.main`
   gap: 2rem;
   margin-top: 4rem;
   margin-bottom: 4rem;
+  padding: 0 2rem;
+  max-width: 1300px;
+  box-sizing: border-box;
 
   .exercise-hero-img {
     background-color: pink;
@@ -25,6 +28,7 @@ export const StyledMain = styled.main`
     font-weight: 700;
     line-height: 2rem;
     margin-bottom: 2rem;
+    text-transform: capitalize;
   }
 
   p {
@@ -47,6 +51,7 @@ export const StyledMain = styled.main`
     span {
       font-size: 1.5rem;
       font-weight: 500;
+      text-transform: capitalize;
     }
   }
 
@@ -57,10 +62,30 @@ export const StyledMain = styled.main`
     border-radius: 50%;
     background-color: #faf898;
   }
+
+  @media (max-width: 980px) {
+    & {
+      grid-template-columns: 1fr;
+    }
+    .exercise-hero-img {
+      max-width: 550px;
+      min-height: 600px;
+      justify-self: center;
+    }
+
+    article {
+      max-width: 550px;
+    }
+  }
 `;
 
 export const StyledSectionVideos = styled.section`
   font-family: Arial, Helvetica, sans-serif;
+  padding: 0 2rem;
+  max-width: 1300px;
+  width: 100%;
+  box-sizing: border-box;
+
   a {
     color: black;
     text-decoration: none;
@@ -91,17 +116,36 @@ export const StyledSectionVideos = styled.section`
     strong {
       font-weight: 600;
       font-size: 1.2rem;
-      line-height: 2.4rem;
+      line-height: 1.5rem;
       margin-top: 0.5rem;
+    }
+  }
+  @media (max-width: 980px) {
+    .videos-container {
+      justify-content: center;
     }
   }
 `;
 
 export const SectionTitle = styled.h2`
+  font-family: Arial, Helvetica, sans-serif;
+
   font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
+  text-transform: capitalize;
   span {
     color: red;
+  }
+`;
+
+export const StyledCarouselSection = styled.section`
+  margin-top: 4rem;
+  padding: 0 2rem;
+  max-width: 1300px;
+  width: 100%;
+  box-sizing: border-box;
+  a {
+    text-decoration: none;
   }
 `;

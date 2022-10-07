@@ -37,13 +37,24 @@ export const SectionHero = styled.section`
     border-radius: 2px;
     cursor: pointer;
   }
+
+  @media (max-width: 1030px) {
+    & {
+      align-items: center;
+    }
+    h1 {
+      max-width: 100%;
+      text-align: center;
+    }
+  }
 `;
 
 export const MainHero = styled.main`
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
-
+  padding: 0 2rem;
+  max-width: 1400px;
   .hero-img {
     object-fit: contain;
     width: 100%;
@@ -59,5 +70,22 @@ export const MainHero = styled.main`
     bottom: -30px;
     color: rgba(243, 18, 18, 0.3);
     margin-left: 1.5rem;
+    @media (max-width: 800px) {
+      & {
+        display: none;
+      }
+    }
+  }
+
+  @media (max-width: 1030px) {
+    & {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      max-height: 1000px;
+    }
+
+    .hero-img {
+      max-height: 700px;
+    }
   }
 `;

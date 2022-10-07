@@ -7,12 +7,9 @@ export default function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-
-      <Routes>
+        <Route path="*" element={<Home />} />
         <Route
-          path="/exercise-details/:bodyPart/:exerciseId"
+          path="/exercise-details/:bodyTarget/:exerciseEquipment/:exerciseName/:exerciseId"
           element={<ExerciseDetail />}
         />
       </Routes>

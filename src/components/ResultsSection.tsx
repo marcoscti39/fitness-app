@@ -12,21 +12,16 @@ export interface exerciseType {
 }
 
 import { StyledResultsSection } from "../styles/styledResultsSection";
+import ExerciseItem from "./ExerciseItem";
 
-export default function ResultsSection() {
-  const [allExercises, setAllExercises] = React.useState<exerciseType[]>([]);
-  React.useEffect(() => {
-    const getAllExercises = async () => {
-      setAllExercises(await fetchAllExercises());
-    };
-    // getAllExercises();
-  }, []);
-
+export default function ResultsSection({
+  exercises,
+}: {
+  exercises: exerciseType[];
+}) {
   const pagNumber = Number(useParams().id) || 0;
 
-  const exercisesSlice = allExercises?.slice(pagNumber * 6, pagNumber * 6 + 6);
-
-  console.log(pagNumber);
+  const exercisesSlice = exercises?.slice(pagNumber * 6, pagNumber * 6 + 6);
 
   return (
     <StyledResultsSection>
@@ -37,18 +32,9 @@ export default function ResultsSection() {
           return (
             <Link
               key={index}
-              to={`/exercise-details/${exercise.bodyPart}/${exercise.id}`}
+              to={`/exercise-details/${exercise.target}/${exercise.equipment}/${exercise.name}/${exercise.id}`}
             >
-              <article>
-                <img src={exercise.gifUrl} alt="" className="results-img" />
-                <div className="results-body-tag">
-                  <span>{exercise.bodyPart}</span>
-                  <span>Triceps</span>
-                </div>
-                <strong className="results-exercise-name">
-                  {exercise.name}
-                </strong>
-              </article>
+              <ExerciseItem {...exercise} />
             </Link>
           );
         })}
